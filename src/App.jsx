@@ -7,6 +7,7 @@ import CardProducto from "./components/pages/producto/CardProducto";
 import FormularioProducto from "./components/pages/producto/FormularioProducto";
 import Footer from "./components/shared/Footer";
 import Menu from "./components/shared/Menu";
+import Login from "./components/pages/Login";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               path="/detalle-producto"
               element={<DetalleProducto />}
             ></Route>
+            <Route path="/login" element={<Login />}></Route>
             <Route path="/administrador" element={<Administrador />}></Route>
             <Route
               path="/administrador/crear"
