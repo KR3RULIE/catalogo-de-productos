@@ -8,8 +8,13 @@ import FormularioProducto from "./components/pages/producto/FormularioProducto";
 import Footer from "./components/shared/Footer";
 import Menu from "./components/shared/Menu";
 import Login from "./components/pages/Login";
+import { useState } from "react";
 
 function App() {
+  // no es necesario envolver al sessionSotrage en el JSON.parse porque el "false" es un valor valido
+  // en el JSON. ose no es necesario convertirlo de nuevo
+  const usuarioLogeado = sessionStorage.getItem("userKey") || false;
+  const [userAdmin, setUserAdmin] = useState(usuarioLogeado);
   return (
     <>
       <BrowserRouter>
@@ -21,7 +26,10 @@ function App() {
               path="/detalle-producto"
               element={<DetalleProducto />}
             ></Route>
-            <Route path="/login" element={<Login />}></Route>
+            <Route
+              path="/login"
+              element={<Login setUserAdmin={setUserAdmin} />}
+            ></Route>
             <Route path="/administrador" element={<Administrador />}></Route>
             <Route
               path="/administrador/crear"
